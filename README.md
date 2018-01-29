@@ -1,37 +1,40 @@
-# CS-Task-1.1
+# CS-Task-1.3
 Module Module1
+
     
     Sub Main()
         Dim Name As String
         Dim MemberIDNumber As String
-        Dim EndFile As String
+        Dim NameToBeFound As String
+        Dim Found As Boolean
 
-        FileOpen(1, "E:\TextFileHandlingAssignment.txt", OpenMode.Output)
-
-        
-
-        Do
-            Console.WriteLine("Enter the Name of the member : ")
-            Name = Console.ReadLine
-            WriteLine(1, Name)
-
-            Console.WriteLine("Enter the Member ID Number : ")
-            MemberIDNumber = Console.ReadLine
-            WriteLine(1, MemberIDNumber)
+        NameToBeFound = ""
+        Name = ""
+        MemberIDNumber = ""
+        Found = False
 
 
-            Console.Write(" Want to end this file?")
-            EndFile = Console.ReadLine
-            EndFile = UCase(EndFile)
-            EndFile = LCase(EndFile)
-        Loop Until EndFile = "yes"
+        FileOpen(1, "E:\TextFileHandlingAssignment.txt", OpenMode.Input)
 
+        Console.Write("The name of the Member : ")
+        NameToBeFound = Console.ReadLine
 
+        Name = UCase(NameToBeFound)
+        Name = LCase(NameToBeFound)
+        NameToBeFound = UCase(Name)
+        NameToBeFound = LCase(Name)
 
+        While EOF(1) = False
+            Input(1, Name)
+            Input(1, MemberIDNumber)
 
+            If Name = NameToBeFound Then
+                Console.WriteLine("The Member ID is : " & MemberIDNumber)
+            Else
+                Console.WriteLine("The Record was not found")
+            End If
+        End While
+
+        Console.ReadKey()
 
     End Sub
-
-
-
-End Module
